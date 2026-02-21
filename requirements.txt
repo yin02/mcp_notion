@@ -1,3 +1,4 @@
 mcp
 notion-client
 python-dotenv
+websockets
