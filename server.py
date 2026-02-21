@@ -5,7 +5,11 @@ import os
 
 load_dotenv()
 
-mcp = FastMCP("NotionAgent")
+mcp = FastMCP(
+    "NotionAgent",
+    host="0.0.0.0",
+    port=int(os.environ.get("PORT", 8000)),
+)
 
 notion = Client(auth=os.getenv("NOTION_TOKEN"))
 
@@ -17,8 +21,4 @@ def get_page(page_id: str):
 
 
 if __name__ == "__main__":
-    mcp.run(
-        transport="streamable-http",
-        host="0.0.0.0",
-        port=int(os.environ.get("PORT", 8000)),
-    )
+    mcp.run(transport="streamable-http")
